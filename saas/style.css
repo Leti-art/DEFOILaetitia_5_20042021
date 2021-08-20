@@ -1,0 +1,35 @@
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+body {
+  background-color: #f5e0f3;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #F3E9F1;
+}
+
+.navbar .navbar__logo {
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navbar .navbar__liste {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 30px;
+}
+
+.navbar .navbar__liste li {
+  padding: 45px 45px 0;
+}
+/*# sourceMappingURL=style.css.map */

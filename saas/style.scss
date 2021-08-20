@@ -1,0 +1,30 @@
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import "utils/variables";
+
+
+body{
+    background-color: #f5e0f3;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar{
+    display:flex;
+    background-color:$primary-color;
+    
+    .navbar__logo{
+        width:300px;
+        display:flex;
+        
+    }
+    .navbar__liste{
+        display:flex;
+        width:100%;
+        justify-content: flex-end;
+        font-size: 30px;
+        
+        & li{
+            padding: 45px 45px 0;
+        }
+    
+    }
+}
