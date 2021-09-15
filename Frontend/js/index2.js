@@ -28,13 +28,14 @@ const showOursons = async () => {
                     <h3 class="ourson-prix">Prix: ${ourson.price} €</h3>
                     <select class="ourson-select">
                     <option value="">Choississez une couleur</option>
-                    <option value="0">${ourson.colors[0]}</option>
-                    <option value="1">${ourson.colors[1]}</option>
-                    <option value="2">${ourson.colors[2]}</option>
-                    <option value="3">${ourson.colors[3]}</option>
+                    ${ourson.colors[0] ? `<option value="">${ourson.colors[0]}</option>` : null}
+                    ${ourson.colors[1] ? `<option value="">${ourson.colors[1]}</option>` : null}
+                    ${ourson.colors[2] ? `<option value="">${ourson.colors[2]}</option>` : null}
+                    ${ourson.colors[3] ? `<option value="">${ourson.colors[3]}</option>` : null}
+                    ${ourson.colors[4] ? `<option value="">${ourson.colors[4]}</option>` : null}
+                    ${ourson.colors[5] ? `<option value="">${ourson.colors[5]}</option>` : null}
                     </select>
-                    <button class="ourson-produit">Voir le produit</button>
-                    
+                    <a href="./produit.html"${ourson._id}" class="ourson-produit">Voir le produit</a>
                 </div>
                                                                                                           
             </div>
@@ -43,11 +44,11 @@ const showOursons = async () => {
             `
 
         )).join('')
-        //finir par join pour éviter quil sépare par des virgules
+        //finir par join pour éviter qu'ils se séparent par des virgules
     );
 
     showProduit.addEventListener('click', function() {
-        showProduit.href = "pages/produit.html?id=' + ourson._id"
+        showProduit.href = "./produit.html?id=' + ourson._id"
     })
 };
 
