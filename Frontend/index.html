@@ -3,48 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="peluches fait main, ecologique">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orin'OURS</title>
-    <!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./saas/style.css">
-    <script src="./js/index2.js" defer></script>
+    <script src="./js/index.js" defer></script>
 </head>
 <body>
 
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand">Orinoco</a>
-          <form class="d-flex">
-            
-            <button href="./panier.html" type="button" class="btn btn-outline-info">Mon Panier</button>
-          </form>
-        </div>
-      </nav>
+  <!--navbarre-->
 
-      <main>
-        <h1 class="titre-page">Nos Oursons fait main</h1>
+  <nav class="navBarre">
+    <div> 
+      <ul>
+        <li>
+          <a href=""><i id="home" class="fas fa-home"></i></a>
+        </li>
+        
+        <li>
+          <a href="./panier.html" ><i id="cart" class="fas fa-shopping-cart"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-        <div id="results" class="container"></div>
+    
 
-      </main>
+  <main>
+    <h1 class="titre-page">Nos Oursons fait main</h1>
+
+<!--template-->
+
+    <div id="teddies" class="teddies"> 
+      <template id="templateArticle">
+        <article class="item">
+          <a  href="./produit.html" id="productLink" class="productLink">
+            <div><img src="" alt="" id="picture" class="picture"/>
+            </div>
+          </a>  
+          <div class="namePrice">
+            <h3 id="nameItem" class="name"></h3> 
+            <div id="price" class="price">
+            </div>
+          </div>               
+        </article>
+      </template>
+    </div>
+
+  </main>
 
   <footer>
     <div class="container">
-      <div class="row">
-          <div class="col text-center">
-              <p class="font-weight-bold">Orinoco</p>
-              <a href="mailto:contact@orinoco.com" class="text-dark">contact@orinoco.com</a>
-              
-          </div>
-      </div>
+      <p class="font-weight-bold">Orinoco</p>
+      <a href="mailto:contact@orinoco.com" class="text-dark">contact@orinoco.com</a>
+                 
     </div>
   </footer>
 
     
-    <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
+    
 </body>
 </html>

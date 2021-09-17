@@ -1,53 +1,38 @@
-let oursons;
-const results = document.getElementById("results");
-let showProduit = document.getElementsByClassName("ourson-produit");
+// fonction permettant de se lancer seul
+(async function() {                                                                 // async pour attendre les réponses des promises
+    const articles = await getArticles()    // constantes + et attente des reponses
+    for (article of articles) {             // boucle pour créer chaque produit
+        displayArticle(article)             // affichage des produits
+    }
+})()
 
-// Api request, fonction async
+// fonction de requete et réponse
+function getArticles() {
+    return fetch("http://localhost:3000/api/teddies")                             // requete vers le lien et reponse
+        .then(function(httpResponse) {                                              // promise 1
+            return httpResponse.json()                                              // type des données de la réponse
+        })
+        .then(function(articles) {                                                  // promise 2 grace au retour du 1
+            return articles              
+        })
+        .catch(function(error) {                                                    // gestion d'erreur                
+            alert(error)
+        })
+}
 
-const fetchOursons = async () => {
-    oursons = await fetch("http://localhost:3000/api/teddies")
-    .then(res => res.json());
-
-};
-
-const showOursons = async () => {
-    await fetchOursons();
-
-    results.innerHTML = (
-        
-        oursons
-        .filter(ourson => ourson.name.toLowerCase())
-        .map(ourson => (
-//on map pour afficher les produits, avec du HTML entre les strings inversés
-            `
-            <div class="ourson-item">
-                <img class="ourson-img" src="${ourson.imageUrl}" />
-                <h3 class="ourson-name">${ourson.name}</h3>
-                <div class="ourson-info">
-                    <h2 class="ourson-description">${ourson.description}</h2>
-                    <h3 class="ourson-prix">Prix: ${ourson.price} €</h3>
-                    <select class="ourson-select">
-                    <option value="">Choississez une couleur</option>
-                    ${ourson.colors[0] ? `<option value="">${ourson.colors[0]}</option>` : null}
-                    ${ourson.colors[1] ? `<option value="">${ourson.colors[1]}</option>` : null}
-                    ${ourson.colors[2] ? `<option value="">${ourson.colors[2]}</option>` : null}
-                    ${ourson.colors[3] ? `<option value="">${ourson.colors[3]}</option>` : null}
-                    ${ourson.colors[4] ? `<option value="">${ourson.colors[4]}</option>` : null}
-                    ${ourson.colors[5] ? `<option value="">${ourson.colors[5]}</option>` : null}
-                    </select>
-                    <a href="./produit.html"${ourson._id}" class="ourson-produit">Voir le produit</a>
-                </div>
-                                                                                                          
-            </div>
-            
-            
-            `
-
-        )).join('')
-        //finir par join pour éviter qu'ils se séparent par des virgules
-    );
-
+// fonction d'affichage des articles
+function displayArticle(article) {
+    const templateItem = document.getElementById("templateArticle")
+    const cloneItem = document.importNode(templateItem.content, true)
     
-};
+    cloneItem.getElementById("picture").setAttribute("src", article.imageUrl),     // setAttribute ->img
+    cloneItem.getElementById("nameItem").textContent= article.name,
+    cloneItem.getElementById("price").textContent= displayPrice(article.price),
+    cloneItem.getElementById("productLink").href += `?id=${article._id}`,          // recuperation/id
+    
+    document.getElementById("teddies").appendChild(cloneItem)                    // creation d'un enfant
+}
 
-showOursons();
+function displayPrice(price) {                                                     // format d'affichage du prix
+    return `${(price/100).toFixed(2)} €`;
+}
