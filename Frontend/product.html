@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="peluches fait main, ecologique">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Orin'OURS</title>
 
     <link rel="stylesheet" href="./saas/style.css">
-    <script src="./js/index.js" defer></script>
+    <script src="./js/product.js" defer></script>
 </head>
 <body>
 
@@ -18,11 +19,11 @@
     <div> 
       <ul>
         <li>
-          <a href=""><i id="home" class="fas fa-home"></i></a>
+          <a href="./index.html"><i id="home" class="fas fa-home"></i></a>
         </li>
         
         <li>
-          <a href="./panier.html" ><i id="cart" class="fas fa-shopping-cart"></i></a>
+          <a href="./purchase.html" ><i id="cart" class="fas fa-shopping-cart"></i></a>
         </li>
       </ul>
     </div>
@@ -31,7 +32,7 @@
     
 
   <main>
-    <h2 class="model">Personnalisez votre article</h2>
+    <h2 class="model">Personnalisez votre peluche</h2>
     <div id="teddiesProduct" class="teddiesProduct"> 
       <div id="templateArticle">
         <article class="item-prod">
@@ -49,12 +50,12 @@
             <p id="description-text" class="description-text"></p> 
           </div>                
         </article>    
-        <h3 class="model">Choisissez votre finition.</h3>
+        <h3 class="model">Choisissez une couleur</h3>
         <form id="colorsForm" class="colorsForm">
           <select id="colors" name="colors" title="Couleurs proposés"> 
           </select>
           <p>
-            <a id="sendBasket" href="./panier.html" title="bouton d'ajout au panier">Ajouter au panier</a>
+            <a id="sendPurchase" href="./purchase.html" title="bouton d'ajout au panier">Ajouter au panier</a>
           </p>
         </form>
       </div>  

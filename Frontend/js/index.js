@@ -15,7 +15,7 @@ function getArticles() {
         .then(function(articles) {                                                  // promise 2 grace au retour du 1
             return articles              
         })
-        .catch(function(error) {                                                    // gestion d'erreur                
+        .catch(function(error) {                                                    // s'il y a une eereur on renvoie error            
             alert(error)
         })
 }
