@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="peluches fait main, ecologique">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Orin'OURS</title>
+
+    <link rel="stylesheet" href="./saas/style.css">
+    <script src="./js/purchase.js" defer></script>
+</head>
+<body>
+
+  <!--navbarre-->
+
+  <nav class="navBarre">
+    <div> 
+      <ul>
+        <li>
+          <a href="./index.html"><i id="home" class="fas fa-home"></i></a>
+        </li>
+        
+        <li>
+          <a href="./purchase.html" ><i id="cart" class="fas fa-shopping-cart"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="purchasepage">
+    <h1 id="panier" class="model">Panier</h1>  
+    <div id="purchaseProducts" class="tab">    
+      <table id="purchaseItem" class="tab">
+        <caption>Vos achats :</caption>
+        <thead>
+          <tr>
+            <th>Article(s) personnalisé(s) :</th>
+            <th>Prix unitaire :</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td class="finalItem"></td>
+              <td class="unitPrice"></td> 
+          </tr>          
+        </tbody>             
+      </table>
+    </div>
+    <div>
+      <button type="button" id="clearPurchase">Vider mon panier</button>
+    </div>   
+    <div id="summaryTotal">
+      <table class="totaux tab">
+        <caption>Récapitulatif de votre panier :</caption>
+        <tr>
+          <td>Nombre d'article(s) commandé(s) :</td>
+          <td id="productsNumber"></td>
+        </tr>
+        <tr>
+          <td>Montant total :</td>
+          <td id="totalPrice"></td>
+        </tr>              
+      </table>
+    </div>
+    <section id="infoGuest">
+      <br/><h2 id="info" class="info">Merci de remplir ce formulaire pour valider votre commande.</h2><br/>
+      <form action="#" id="formulaire"> 
+        <fieldset class="nameDetails">
+          <legend>Vos informations personnelles</legend>
+          <p>
+            <label for="lastName">Nom :</label>
+            <input type="text" name="lastName" id="lastName" placeholder="  Nom" required /><br/>
+          </p>
+          <p>
+            <label for="firstName">Prénom :</label>
+            <input type="text" name="firstName" id="firstName" placeholder="  Prénom" required /><br/>
+          </p>
+          <p>
+            <label for="email">E-mail :</label>
+            <input type="email" name="email" id="email" placeholder=" ...@..." required /><br/>
+          </p><br/>
+        </fieldset>
+        <fieldset class="addressDetails">
+          <legend>Coordonnées :</legend>
+          <p>
+            <label for="address">Adresse :</label>
+            <input type="text" name="address" id="address" placeholder="  Adresse" required />
+          </p>
+          <p>
+            <label for="city">CP + Ville :</label>
+            <input type="text" name="city" id="city" placeholder="  Code postal et Ville" required />
+          </p> 
+        </fieldset>
+      </form>        
+    </section>
+
+    <br/><button type="submit" id="sendOrder">Valider ma commande</button><br/> 
+  
+  </main> 
+
+  <footer>
+    <div class="container">
+      <p class="font-weight-bold">Orinoco</p>
+      <a href="mailto:contact@orinoco.com" class="text-dark">contact@orinoco.com</a>
+                 
+    </div>
+  </footer>
+
+    
+    
+</body>
+</html>

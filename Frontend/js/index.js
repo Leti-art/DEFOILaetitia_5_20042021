@@ -1,21 +1,26 @@
 // fonction permettant de se lancer seul
-(async function() {                                                                 // async pour attendre les réponses des promises
-    const articles = await getArticles()    // constantes + et attente des reponses
-    for (article of articles) {             // boucle pour créer chaque produit
-        displayArticle(article)             // affichage des produits
+(async function() {        
+// async: pour attendre les réponses des promises
+    const articles = await getArticles()    // constantes  attente des reponses
+    // boucle pour créer chaque produit
+    for (article of articles) {     
+// affichage des produits
+        displayArticle(article)             
     }
 })()
 
 // fonction de requete et réponse
 function getArticles() {
-    return fetch("http://localhost:3000/api/teddies")                             // requete vers le lien et reponse
+// requete vers le lien et reponse
+    return fetch("http://localhost:3000/api/teddies")       
+
         .then(function(httpResponse) {                                              // promise 1
-            return httpResponse.json()                                              // type des données de la réponse
+            return httpResponse.json()                                              // avoir données de la réponse en json
         })
         .then(function(articles) {                                                  // promise 2 grace au retour du 1
             return articles              
         })
-        .catch(function(error) {                                                    // s'il y a une eereur on renvoie error            
+        .catch(function(error) {                                                    // s'il y a une erreur on renvoie error            
             alert(error)
         })
 }
