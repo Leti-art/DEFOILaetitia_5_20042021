@@ -18,4 +18,26 @@ const displayPurchase = (purchase) => {
             productsEltName.appendChild(trElt);
     console.log(productName);
         }
-}
+
+        //on affiche les tarifs
+
+        const productsEltPrice = document.querySelector(".unitPrice");
+            for (let i = purchase.products.length; i--;) {
+                const productPrice = purchase.products[i].price        
+                let trElt = document.createElement("tr"); 
+                trElt.innerText = displayPrice(productPrice);
+                productsEltPrice.appendChild(trElt);
+
+                console.log(productPrice);
+            }
+        
+
+};
+
+// pour vider le Panier
+
+clearPurchase.onclick = () => {
+    localStorage.clear();
+    document.location.reload();
+};
+
