@@ -95,3 +95,107 @@ const checkInputCodePostal = (input) => {
     }
     return true;
 };
+
+//pour la création des données du client
+
+const getValueFromInput = (input) =>    
+    document.querySelector(`#${input}`).value;
+
+const buildContactData = () => {                                   
+    const lastName = getValueFromInput("lastName");
+    const firstName = getValueFromInput("firstName");
+    const email = getValueFromInput("email");
+    const address = getValueFromInput("address");
+    const codePostal = getValueFromInput("codePostal")
+    const city = getValueFromInput("city");
+
+// controle que chaque variable avant envoi le formulaire 
+
+    if (
+        !checkInputName(lastName) ||                              
+        !checkInputName(firstName) ||
+        !checkInputAddress(address) ||
+        !checkInputCity(city) ||
+        !checkInputEmail(email) ||
+        !checkInputCodePostal(codePostal)
+    ) {
+        return false;                        
+    }
+        alert("Merci pour votre commande sur Orin'Ours !");
+    return {                                           
+        lastName: lastName,
+        firstName: firstName,
+        email: email,
+        address: address,
+        city: city
+        
+    };
+};
+
+//--- creation des objets articles
+
+const buildProductsData = (purchase) => {                             
+    const ids = [];
+    for (let i = purchase.products.length; i--;) {
+            ids.push(purchase.products[i]._id);
+    }
+        return ids;
+}; 
+
+// format du fetch post
+
+const buildObjectsForOrder = (purchase) => {                          
+    const contact = buildContactData();
+    const products = buildProductsData(purchase);  
+    return {
+        contact: contact,
+        products: products,
+    }   
+};
+
+// si jamais le panier du client est vide
+const displayEmptyPurchase = () => {                                  
+    document.querySelector(".purchasePage").innerHTML = '<br/><div>Votre panier est vide.</div><br/>';
+}
+(() => {
+    const purchase = JSON.parse(localStorage.getItem("purchase"));
+    if (purchase && purchase.products.length){
+        displayPurchase(purchase);
+    }else{
+        displayEmptyPurchase();
+    } 
+
+    const sendOrder = () => {
+        const data = buildObjectsForOrder(purchase);
+    console.log(data);
+    // gestion des erreurs ; si contact =  true,  on execute le fectch
+        if(!!data.contact){                                         
+            fetch("http://localhost:3000/api/teddies/order", {
+                method: "post",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(data),              
+            })
+            .then(function (httpResponse) {
+                return httpResponse.json();
+            })
+            .then(function (order) {
+        console.log(order);
+            localStorage.setItem('order', JSON.stringify(order));
+            localStorage.removeItem('purchase');
+            location.replace('/order.html');
+                return order;
+            })
+            .catch(function (error) {
+                alert(error);
+            });   
+        } else {
+            alert('Votre formulaire est mal rempli');      
+        }
+    };
+    const btn = document.querySelector('#sendOrder');
+    btn.addEventListener('click', sendOrder);
+})();
+
