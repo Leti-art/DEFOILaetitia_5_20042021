@@ -30,9 +30,16 @@ const displayPurchase = (purchase) => {
 
                 console.log(productPrice);
             }
-        
+
+    let totalPrice = 0;
+    for (let i = purchase.products.length; i--;) {       
+        totalPrice += purchase.products[i].price;
+    }
+    document.querySelector("#totalPrice").innerText = displayPrice(totalPrice);
+console.log(totalPrice);
 
 };
+
 
 // pour vider le Panier
 
@@ -43,63 +50,52 @@ clearPurchase.onclick = () => {
 
 //partie formulaire et vérification des données entrées
 
-// vérification du format adresse mail
-
-const checkInputEmail = (input) => {                               
-    if (input.length <=1 || !input.match(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {           
-        alert("Veuillez vérifier votre adresse E-mail !");
-        return false;
+function addEventListeners() {
+    // Poursuivre sur le button
+    document.getElementById('sendOrder').onclick = (e) => {
+        e.preventDefault()
+        sendOrder()
     }
-    return true;
-};
 
-// vérification nom + prénom + ville: verifie <1 lettre et pas de chiffre
-const checkInputLastName = (input) => {                                
-    if (input.length <=1 || input.match(/[0-9]/g)){               
-        alert("Nom mal saisi."); 
-        return false;       
-    }
-    return true;   
-};
+    // Input de validation des champs (Prénom + Nom + mail + adresse + code postal + ville)
+    watchValidity(document.getElementById('firstName'), (e) => e.target.value.length > 1)
+    watchValidity(document.getElementById('lastName'), (e) => e.target.value.length > 1)
+    watchValidity(document.getElementById('email'), (e) => {
+        const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+        return emailRegex.test(e.target.value)
+    })
+    watchValidity(document.getElementById('address'), (e) => e.target.value.length > 6)
+    watchValidity(document.getElementById('codePostal'), (e) => {
+        const codePostalRegex = /[0-9]{5}(-[0-9]{4})?/
+        return codePostalRegex.test(e.target.value)
+    })
 
-const checkInputFirstName = (input) => {                                
-    if (input.length <=1 || input.match(/[0-9]/g)){               
-        alert("Prénom mal saisi."); 
-        return false;       
-    }
-    return true;   
-};
+    watchValidity(document.getElementById('city'), (e) => e.target.value.length > 1)
+}
 
-const checkInputCity = (input) => {                                
-    if (input.length <=1 || input.match(/[0-9]/g)){               
-        alert("Veuillez saisir un nom de ville."); 
-        return false;       
-    }
-    return true;   
-};
 
-// vérification de l'adresse: verifie <1 lettre
-const checkInputAddress = (input) => {                             
-    if (input.length <=2) {
-        alert("Veuillez vérifier votre adresse.");
-        return false;
+function watchValidity(elt, condition) { //valider ou non le champ de l'input en fonction de l'action de l'utilisateur. Champ validé si les caractères attendus de l'input sont correct sinon retourne une erreur si champ incorrect ou vide
+    elt.oninput = (e) => {
+        if (condition(e)) {
+            validInputElt(e.target)
+        } else {
+            neutralInputElt(e.target)
+        }
     }
-    return true;
-};
 
-// véirification du code postale et de la ville 
-const checkInputCodePostal = (input) => {                                
-    if (!input.match(/^([0-9]{5}) (.*)$/g)){               
-        alert("Veuillez corriger votre Code postal.");
-        return false;
+    elt.onblur = (e) => {
+        if (!condition(e)) {
+            invalidInputElt(e.target)
+        }
     }
-    return true;
-};
+}
+
+
 
 //pour la création des données du client
 
 const getValueFromInput = (input) =>    
-    document.querySelector(`#${input}`).value;
+    document.querySelector("#formulaire").value;
 
 const buildContactData = () => {                                   
     const lastName = getValueFromInput("lastName");
@@ -109,29 +105,7 @@ const buildContactData = () => {
     const codePostal = getValueFromInput("codePostal");
     const city = getValueFromInput("city");
 
-// controle de chaque variable avant l'envoi du formulaire 
 
-    if (
-        !checkInputName(lastName) ||                              
-        !checkInputName(firstName) ||
-        !checkInputAddress(address) ||
-        !checkInputCity(city) ||
-        !checkInputEmail(email) ||
-        !checkInputCodePostal(codePostal)
-    ) {
-        return false;                        
-    }
-        alert("Merci pour votre commande sur Orin'Ours !");
-    return {                                           
-        lastName: lastName,
-        firstName: firstName,
-        email: email,
-        address: address,
-        codePostal: codePostal,
-        city: city
-        
-        
-    };
 };
 
 //--- creation des objets articles
@@ -194,9 +168,9 @@ const displayEmptyPurchase = () => {
             .catch(function (error) {
                 alert(error);
             });   
-        } else {
+        } /*else {
             alert('Votre formulaire est mal rempli');      
-        }
+        }*/
     };
     const btn = document.querySelector('#sendOrder');
     btn.addEventListener('click', sendOrder);
