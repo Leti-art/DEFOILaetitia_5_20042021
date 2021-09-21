@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="peluches fait main, ecologique">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Orin'OURS</title>
+
+    <link rel="stylesheet" href="./saas/style.css">
+    <script src="./js/order.js" defer></script>
+</head>
+<body>
+
+  <!--navbarre-->
+
+  <nav class="navBarre">
+    <div> 
+      <ul>
+        <li>
+          <a href="./index.html">Accueil <i id="home" class="fas fa-home"></i></a>
+        </li>
+        
+        <li>
+          <a href="./purchase.html">Mon panier<i id="cart" class="fas fa-shopping-cart"></i></a>
+        </li>
+        <li>
+            <a href="./order.html" title="commande"><i class="fas fa-check"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main class="pageOrder">
+
+    <section id="guestIndent">
+      <div>
+        <h2 id="orderAddress">Adresse de livraison : </h2>
+        <p>Nom : 
+          <span id="indentLastName"></span>
+        </p>
+        <p>Prénom : 
+          <span id="indentFirstName"></span>
+        </p>
+        <p>Adresse : 
+          <span id="indentAddress"></span>
+        </p>
+        <p>Code Postal : 
+            <span id="indentCodePostal"></span>
+          </p>
+        <p>Ville : 
+          <span id="indentCity"></span>
+        </p>
+        <p>e-mail : 
+          <span id="indentEmail"></span>
+        </p>
+      </div> 
+    </section> 
+
+    <section id="indent">
+      <br/>
+      <h3 id="numberOrder">Numéro de commande : 
+        <span id="orderNumber"></span>
+      </h3><br/>
+      <h4>Date de commande :</h4>
+        <span id="today"></span><br/>
+          <div id="ordertIndentProducts" class="p31">    
+        <table id="orderIndentItem" class="p31">
+          <caption>Votre/s produit(s) commandé(s) :</caption>
+          <thead>
+            <tr>
+              <th>Article(s) :</th>
+              <th>Prix unitaire:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="finalIndentItem"></td>
+              <td class="unitIndentPrice"></td> 
+            </tr>          
+          </tbody>             
+        </table>
+      </div>
+      <div>
+        <table class="totaux p31">
+          <caption>Récapitulatif de ma commande :</caption>
+          <tr>
+            <td>Nombre d'article(s) commandé(s) :</td>
+            <td id="indentProductsNumber"></td>
+          </tr>
+          <tr>
+            <td>Montant à régler :</td>
+            <td id="indentTotalPrice"></td>
+          </tr>              
+        </table>
+      </div>
+    </section>
+            
+  </main>
+
+    
+
+  <footer>
+    <div class="container">
+      <p class="font-weight-bold">Orinoco</p>
+      <a href="mailto:contact@orinoco.com" class="text-dark">contact@orinoco.com</a>
+                 
+    </div>
+  </footer>
+
+    
+    
+</body>
+</html>
