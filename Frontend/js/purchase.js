@@ -2,10 +2,10 @@
 
 const displayPurchase = (purchase) => {
     document.getElementById("productsNumber").innerText = purchase.nbProducts;
-    document.getElementById("total.Price").innerText = displayPrice(purchase.totalPrice);
+    document.getElementById("totalPrice").innerText = displayPrice(purchase.totalPrice);
 
     function displayPrice(price) {
-        return `${(price/100).toFixed(2)} €`;
+        return `${(price/100)} €`;
     }
 
     //on affiche les produits personnalisés
@@ -106,10 +106,10 @@ const buildContactData = () => {
     const firstName = getValueFromInput("firstName");
     const email = getValueFromInput("email");
     const address = getValueFromInput("address");
-    const codePostal = getValueFromInput("codePostal")
+    const codePostal = getValueFromInput("codePostal");
     const city = getValueFromInput("city");
 
-// controle que chaque variable avant envoi le formulaire 
+// controle de chaque variable avant l'envoi du formulaire 
 
     if (
         !checkInputName(lastName) ||                              
@@ -127,7 +127,9 @@ const buildContactData = () => {
         firstName: firstName,
         email: email,
         address: address,
+        codePostal: codePostal,
         city: city
+        
         
     };
 };
@@ -135,11 +137,11 @@ const buildContactData = () => {
 //--- creation des objets articles
 
 const buildProductsData = (purchase) => {                             
-    const ids = [];
+    const ours = [];
     for (let i = purchase.products.length; i--;) {
-            ids.push(purchase.products[i]._id);
+            ours.push(purchase.products[i]._id);
     }
-        return ids;
+        return ours;
 }; 
 
 // format du fetch post
@@ -157,6 +159,7 @@ const buildObjectsForOrder = (purchase) => {
 const displayEmptyPurchase = () => {                                  
     document.querySelector(".purchasePage").innerHTML = '<br/><div>Votre panier est vide.</div><br/>';
 }
+
 (() => {
     const purchase = JSON.parse(localStorage.getItem("purchase"));
     if (purchase && purchase.products.length){
@@ -168,7 +171,7 @@ const displayEmptyPurchase = () => {
     const sendOrder = () => {
         const data = buildObjectsForOrder(purchase);
     console.log(data);
-    // gestion des erreurs ; si contact =  true,  on execute le fectch
+    // gestion des erreurs ; si contact =  true,  on execute le fetch
         if(!!data.contact){                                         
             fetch("http://localhost:3000/api/teddies/order", {
                 method: "post",
