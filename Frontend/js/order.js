@@ -53,4 +53,59 @@ function displayPrice(price) {
     return `${(price/100)} €`;
 }
 
-
+//Fonction pour obtenir un Id de commande
+function getOrderId(responseId) {
+    let orderId = responseId.orderId;
+    console.log(orderId);
+    localStorage.setItem("orderId", orderId);
+    // au clic du bouton, on arrive sur la page de confirmation
+    window.location.href='./order.html?orderId=' + orderId;
+  }
+  
+  //Fonction pour gérer la soumission du formulaire
+  async function handleSubmit(event) {
+    //Récupération des données saisie dans le formulaire
+    event.preventDefault();
+      try {
+        const data = new FormData(event.target);
+        const lastName = data.get('lastName');
+        const firstName = data.get('firstName');
+        const adress = data.get('adress');
+        const codePostal = data.get('codePostal');
+        const city = data.get('city');
+        const email = data.get('email');
+        
+        
+          //Envoyer le panier et le contact
+          if(purchaseRecovery && purchaseRecovery.length > 0){
+            //créer le contact
+            const contact = new Contact(firstName, lastName, adress, city, codePostal, email);
+            // On récupère les id des produits se trouvant dans le panier
+            const productIdList = [];
+            purchaseRecovery.forEach(product => productIdList.push(product.id));
+            //créer la commande avec le contact et le panier
+            const order = new Order (contact, productIdList);
+            let response = await sendCommandToServer(order);
+            getOrderId(response);
+          }
+        }catch(e) {
+          console.log(e);
+        }
+  }
+  
+  //Fonction pour l'envoi de la commande en method POST vers le serveur
+  async function sendCommandToServer(order) {
+    const config = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(order)
+    }
+      const response = await fetch("http://localhost:3000/api/teddies/order", config)
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP ! statut : ${response.status}`);
+        }
+          return await response.json();
+  }

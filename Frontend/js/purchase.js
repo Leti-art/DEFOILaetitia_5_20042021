@@ -48,6 +48,32 @@ clearPurchase.onclick = () => {
     document.location.reload();
 };
 
+// formulaire et vérification des données
+
+function sendOrder() {
+    const firstName = document.getElementById('firstName').value
+    const lastName = document.getElementById('lastName').value
+    const address = document.getElementById('address').value
+    const codePostal = document.getElementById('codePostal').value
+    const email = document.getElementById('email').value
+    const city = document.getElementById('city').value
+
+    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+    const codePostalRegex = /[0-9]{5}(-[0-9]{4})?/
+
+    if (!(
+            firstName.length > 1 &&
+            lastName.length > 1 &&
+            emailRegex.test(email) &&
+            address.length > 6 &&
+            codePostalRegex.test(codePostal) &&
+            city.length > 1
+        )) {
+        alert("Veuillez remplir les champs correctement avant de procéder au paiement ! ")
+        return
+    }
+}
+
 //partie formulaire et vérification des données entrées
 
 function addEventListeners() {
@@ -55,38 +81,6 @@ function addEventListeners() {
     document.getElementById('sendOrder').onclick = (e) => {
         e.preventDefault()
         sendOrder()
-    }
-
-    // Input de validation des champs (Prénom + Nom + mail + adresse + code postal + ville)
-    watchValidity(document.getElementById('firstName'), (e) => e.target.value.length > 1)
-    watchValidity(document.getElementById('lastName'), (e) => e.target.value.length > 1)
-    watchValidity(document.getElementById('email'), (e) => {
-        const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-        return emailRegex.test(e.target.value)
-    })
-    watchValidity(document.getElementById('address'), (e) => e.target.value.length > 6)
-    watchValidity(document.getElementById('codePostal'), (e) => {
-        const codePostalRegex = /[0-9]{5}(-[0-9]{4})?/
-        return codePostalRegex.test(e.target.value)
-    })
-
-    watchValidity(document.getElementById('city'), (e) => e.target.value.length > 1)
-}
-
-
-function watchValidity(elt, condition) { //valider ou non le champ de l'input en fonction de l'action de l'utilisateur. Champ validé si les caractères attendus de l'input sont correct sinon retourne une erreur si champ incorrect ou vide
-    elt.oninput = (e) => {
-        if (condition(e)) {
-            validInputElt(e.target)
-        } else {
-            neutralInputElt(e.target)
-        }
-    }
-
-    elt.onblur = (e) => {
-        if (!condition(e)) {
-            invalidInputElt(e.target)
-        }
     }
 }
 
@@ -111,11 +105,11 @@ const buildContactData = () => {
 //--- creation des objets articles
 
 const buildProductsData = (purchase) => {                             
-    const ours = [];
+    const ids = [];
     for (let i = purchase.products.length; i--;) {
-            ours.push(purchase.products[i]._id);
+            ids.push(purchase.products[i]._id);
     }
-        return ours;
+        return ids;
 }; 
 
 // format du fetch post
