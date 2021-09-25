@@ -19,7 +19,7 @@ const displayPurchase = (purchase) => {
     console.log(productName);
         }
 
-        //on affiche les tarifs
+        //on affiche les prix
 
         const productsEltPrice = document.querySelector(".unitPrice");
             for (let i = purchase.products.length; i--;) {
@@ -42,63 +42,77 @@ console.log(totalPrice);
 
 
 // pour vider le Panier
-
-clearPurchase.onclick = () => {
+document.querySelector('#clearPurchase').onclick = () => {
     localStorage.clear();
     document.location.reload();
 };
 
+
 // formulaire et vérification des données
 
-function sendOrder() {
-    const firstName = document.getElementById('firstName').value
-    const lastName = document.getElementById('lastName').value
-    const address = document.getElementById('address').value
-    const codePostal = document.getElementById('codePostal').value
-    const email = document.getElementById('email').value
-    const city = document.getElementById('city').value
-
-    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-    const codePostalRegex = /[0-9]{5}(-[0-9]{4})?/
-
-    if (!(
-            firstName.length > 1 &&
-            lastName.length > 1 &&
-            emailRegex.test(email) &&
-            address.length > 6 &&
-            codePostalRegex.test(codePostal) &&
-            city.length > 1
-        )) {
-        alert("Veuillez remplir les champs correctement avant de procéder au paiement ! ")
-        return
+const checkInputName = (input) => {                                // verifie <1 lettre et pas de chiffre
+    if (input.length <=1 || input.match(/[0-9]/g)){               
+        alert("Nom ou Prénom mal saisi."); 
+        return false;       
     }
-}
+    return true;   
+};
 
-//partie formulaire et vérification des données entrées
-
-function addEventListeners() {
-    // Poursuivre sur le button
-    document.getElementById('sendOrder').onclick = (e) => {
-        e.preventDefault()
-        sendOrder()
+const checkInputEmail = (input) => {                               // verifie le format mail
+    if (input.length <=1 || !input.match(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {           
+        alert("Veuillez vérifier votre adresse E-mail.");
+        return false;
     }
-}
+    return true;
+};
 
+const checkInputAddress = (input) => {                             // verifie <1 lettre
+    if (input.length <=2) {
+        alert("Veuillez vérifier votre adresse.");
+        return false;
+    }
+    return true;
+};
+
+const checkInputCity = (input) => {
+    if (input.length <=2) {
+        alert("Veuillez vérifier votre adresse.");
+        return false;
+    }
+    return true;
+};
 
 
 //pour la création des données du client
 
 const getValueFromInput = (input) =>    
-    document.querySelector("#formulaire").value;
+    document.querySelector(`#${input}`).value;
 
 const buildContactData = () => {                                   
     const lastName = getValueFromInput("lastName");
     const firstName = getValueFromInput("firstName");
     const email = getValueFromInput("email");
     const address = getValueFromInput("address");
-    const codePostal = getValueFromInput("codePostal");
     const city = getValueFromInput("city");
 
+    if (
+        !checkInputName(lastName) ||                               // controle que chaque variable avant envoi du formulaire 
+        !checkInputName(firstName) ||
+        !checkInputAddress(address) ||
+        !checkInputCity(city) ||
+        !checkInputEmail(email) 
+    ) {
+        return false;                        
+    }
+    alert("Merci pour votre commande");
+    return {                                           
+        lastName: lastName,
+        firstName: firstName,
+        email: email,
+        address: address,
+        city: city
+        
+    };
 
 };
 
@@ -155,8 +169,8 @@ const displayEmptyPurchase = () => {
             .then(function (order) {
         console.log(order);
             localStorage.setItem('order', JSON.stringify(order));
-            localStorage.removeItem('purchase');
-            location.replace('/order.html');
+            /*localStorage.removeItem('purchase');*/
+            location.replace('./order.html');
                 return order;
             })
             .catch(function (error) {
