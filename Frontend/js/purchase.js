@@ -5,7 +5,7 @@ const displayPurchase = (purchase) => {
     document.getElementById("totalPrice").innerText = displayPrice(purchase.totalPrice);
 
     function displayPrice(price) {
-        return `${(price/100)} €`;
+        return `${(price/100).toFixed(2)} €`;
     }
 
     //on affiche les produits personnalisés
