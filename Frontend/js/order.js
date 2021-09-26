@@ -50,7 +50,7 @@ console.log(indentTotalPrice);
 
 
 function displayPrice(price) {        
-    return `${(price/100)} €`;
+    return `${(price/100).toFixed(2)} €`;
 }
 
 //Fonction pour obtenir un Id de commande
