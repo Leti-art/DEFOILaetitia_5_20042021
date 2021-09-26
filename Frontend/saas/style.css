@@ -4,13 +4,53 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.titre-page {
-  font-size: large;
+.navBarre {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #F3E9F1;
+  margin-bottom: 50px;
+}
+
+.navBarre .navBarre__liste {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navBarre .navBarre__liste ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+  margin-right: 50px;
+  text-decoration: none;
+}
+
+.navBarre .navBarre__liste ul li {
+  padding: 30px 50px 0 0;
+}
+
+.logo {
+  height: 110px;
+  width: 200px;
+}
+
+.titre-page,
+.model {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 30px;
   font-weight: bold;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 20px 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 50px;
 }
 
 .teddies {
@@ -23,7 +63,8 @@ body {
   margin: 20px 20px 0 20px;
 }
 
-.item {
+.item,
+.item-prod {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -41,16 +82,21 @@ body {
   position: relative;
 }
 
-.item .picture {
+.item .picture,
+.item .picture-prod,
+.item-prod .picture,
+.item-prod .picture-prod {
   width: 100%;
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  object-fit: cover;
 }
 
-.item .price {
+.item .price,
+.item-prod .price {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -68,7 +114,47 @@ body {
   font-weight: bold;
 }
 
-.item .name {
+.item .name,
+.item-prod .name {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-weight: bold;
+  font-size: 20px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border-radius: 5px;
+  padding: 5px 7px;
+  border: 1px solid #F3E9F1;
+  background-color: white;
+  border-color: transparent;
+}
+
+/*page products*/
+.teddiesProduct {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.teddiesProduct .templateArticle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.teddiesProduct .templateArticle .nameItem {
   position: absolute;
   top: 15px;
   right: 15px;

@@ -7,15 +7,47 @@ body{
     background-color: #FFFCEA;
     font-family: 'Roboto', sans-serif;
 }
+.navBarre {
+    display: flex;
+    background-color:$primary-color;
+    margin-bottom: 50px;
+    & .navBarre__liste{
+        width: 100%;
+        display: flex;
 
-.titre-page{
-    font-size: large;
-    font-weight: bold;
-    align-items: center;
-    margin: 20px 0;
+        & ul{
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            margin-right: 50px;
+            text-decoration: none;
+             & li {
+                 padding: 30px 50px 0 0;
+                 
+             }
+        }
+        
+    }
+
 }
 
-.teddies {
+.logo{
+    height:110px;
+    width: 200px;
+    
+}
+
+.titre-page,
+.model{
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    justify-content: center;
+    margin-bottom: 50px;
+    
+}
+
+.teddies{
    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px;
@@ -24,7 +56,8 @@ body{
     
 }
 
-.item{
+.item,
+.item-prod{
     display: flex;
     border: 1px solid transparent;
     border-radius: 20px;
@@ -35,12 +68,14 @@ body{
     box-shadow: 0px 7px 10px -6px #b9b8b8;
     position: relative;
 
-    .picture{
+    .picture,
+    .picture-prod{
         width: 100%;
         height: 300px;
         object-fit: cover;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
+        object-fit: cover;
     }
 
     
@@ -69,6 +104,35 @@ body{
     }
 
     
+}
+/*page products*/
+
+.teddiesProduct{
+    
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    & .templateArticle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        & .nameItem{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-weight: bold;
+        font-size: 20px;
+        position:absolute;
+        top: 15px;
+        right: 15px;
+        @include bouton;
+        }
+    }
+
+
+ 
 }
 
 footer {
