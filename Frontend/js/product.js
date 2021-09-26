@@ -20,7 +20,7 @@ const getArticleId =  function () {
  }
  
  function displayPrice(price) {
-     return `${(price/100)} €`;
+     return `${(price/100).toFixed(2)} €`;
  }
        // j'affiche mon produit en injectant les éléments
  function hydrateArticle(article) {                                                  
