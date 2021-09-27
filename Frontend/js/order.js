@@ -4,7 +4,6 @@ const order = JSON.parse(localStorage.getItem("order"));
     document.getElementById("indentLastName").innerText = order.contact.lastName;
     document.getElementById("indentFirstName").innerText = order.contact.firstName;
     document.getElementById("indentAddress").innerText= order.contact.address;
-    document.getElementById("indentCodePostal").innerText = order.contact.codePostal;
     document.getElementById("indentCity").innerText = order.contact.city;
     document.getElementById("indentEmail").innerText = order.contact.email;
 

@@ -6,9 +6,12 @@
 body{
     background-color: #FFFCEA;
     font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    list-style: none;
 }
 .navBarre {
     display: flex;
+    width: 100%;
     background-color:$primary-color;
     margin-bottom: 50px;
     & .navBarre__liste{
@@ -28,14 +31,35 @@ body{
         }
         
     }
+    @media screen and (max-width: 768px){
+        
+        display: flex;
+        flex-direction: column;
+        & .navBarre__liste {
+            padding-bottom: 20px;
+        }
+
+        
+    }
 
 }
+
+
 
 .logo{
     height:110px;
     width: 200px;
     
+    @media screen and (max-width: 768px){
+        
+        display: flex;
+        justify-content:center;
+        
+    }
+    
 }
+
+/*page index*/
 
 .titre-page,
 .model{
@@ -44,32 +68,41 @@ body{
     font-weight: bold;
     justify-content: center;
     margin-bottom: 50px;
-    
+    @media screen and (max-width: 768px) {
+       
+        align-items: center;
+        margin-left: 20px;
+        
+    }
 }
 
-.teddies{
+.teddies {
    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px;
     width: 90%;
     margin: 20px 20px 0 20px;
-    
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+        margin: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        
+    }
 }
 
-.item,
-.item-prod{
+.item{
     display: flex;
     border: 1px solid transparent;
     border-radius: 20px;
     flex-direction: column;
-    border-radius: 20px;
     border:2px solid white;
     position: relative;
     box-shadow: 0px 7px 10px -6px #b9b8b8;
-    position: relative;
+    
 
-    .picture,
-    .picture-prod{
+    .picture{
         width: 100%;
         height: 300px;
         object-fit: cover;
@@ -100,7 +133,7 @@ body{
         position:absolute;
         top: 15px;
         right: 15px;
-        @include bouton;
+        @include teddies;
     }
 
     
@@ -112,31 +145,197 @@ body{
     display: flex;
     justify-content: center;
     position: relative;
-
-    & .templateArticle{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        & .nameItem{
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        font-weight: bold;
-        font-size: 20px;
-        position:absolute;
-        top: 15px;
-        right: 15px;
-        @include bouton;
-        }
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+        margin: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+   
     }
 
+    & #templateArticle{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 7px 10px -6px #b9b8b8;
+        border-radius: 20px;
+        & .model {
+            margin-top: 20px;
+        }
 
+        & .colorsForm{
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            background-color:$primary-color;
+            width: 100%;
+            display: flex;
+            
+            justify-content:center;
+            & #colors{
+                margin: 20px 20px 20px 0;
+                @include bouton;
+                
+            }
+
+            & p{
+                margin: 20px 0 20px 20px;
+                @include bouton;
+            }
+        }
+        
+    }
  
 }
+.item-prod{
+    display: flex;
+    border: 1px solid transparent;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    flex-direction: column;   
+    border:2px solid white;
+    position: relative;
+    
+    & .picture-prod{
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        
+    }
+    & .namePrice{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $primary-color;
+        padding: 10px;
+        font-weight: bold;
+    }
+    & #description{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0 0 20px;
+        & .description-title{
+            font-weight: bold;
+            padding: 10px;
+        }
+    }
+    
+
+}
+
+/*page panier*/
+
+.purchasePage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 30px;
+
+    & #clearPurchase{
+        margin-bottom: 20px;
+        @include bouton;
+    }
+    & #clearPurchase:hover {
+        cursor: pointer;
+    }
+    
+    & #purchaseProducts,
+    #summaryTotal,
+    #infoGuest{
+        display: flex;
+        width: 100%;
+        flex-direction:column;
+        justify-content: center;
+        border:2px solid black;
+        border-radius: 20px;
+        box-shadow: 0px 7px 10px -6px #b9b8b8;
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    & .info,
+    legend {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    #sendOrder{
+        margin: 20px 0 10px 0;
+        @include bouton;
+        
+    }
+    & #sendOrder:hover {
+        cursor: pointer;
+    }
+}
+
+.info {
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+#formulaire{
+
+    & label {
+        margin-left: 20px;
+    }
+    & input{
+        @include input;
+        margin: 5px;
+    }
+}
+.totaux tab{
+    @media screen and (max-width: 768px) {
+        padding: 10px;
+
+    }
+}
+
+/*page order*/
+
+.pageOrder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+    
+
+    & #guestIndent,
+    #indent{
+        border:2px solid black;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0px 7px 10px -6px #b9b8b8;
+        margin-bottom: 20px;
+    }
+        
+}
+
+/*footer*/
 
 footer {
     background-color: $primary-color;
     margin-top: 50px;
+    padding-bottom: 50px;
+
+    & .footer__group{
+        padding-top: 50px;
+        @media screen and (max-width: 768px){           
+           display: flex;
+           flex-direction: column;
+            
+        }
+    }
+    
+    & a{
+        padding: 0 0 20px 20px;
+        
+    }
     
 }

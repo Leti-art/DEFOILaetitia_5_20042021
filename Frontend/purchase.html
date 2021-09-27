@@ -31,20 +31,20 @@
   </nav>
 
   <main class="purchasePage">
-    <h1 id="panier" class="model">Panier</h1>  
+    <h1 id="panier" class="model">Mon panier</h1>  
     <div id="purchaseProducts" class="tab">    
       <table id="purchaseItem" class="tab">
-        <caption>Vos achats :</caption>
+        <caption class="info">Vos achats :</caption>
         <thead>
           <tr>
-            <th>Article(s) personnalisé(s) :</th>
-            <th>Prix unitaire :</th>
+            <td>Article(s) :</td>
+            <td>Prix :</td>
           </tr>
         </thead>
         <tbody>
           <tr>
-              <td class="finalItem"></td>
-              <td class="unitPrice"></td> 
+            <td class="finalItem"></td>
+            <td class="unitPrice"></td> 
           </tr>          
         </tbody>             
       </table>
@@ -54,9 +54,9 @@
     </div>   
     <div id="summaryTotal">
       <table class="totaux tab">
-        <caption>Récapitulatif de votre panier :</caption>
+        <caption class="info">Récapitulatif de votre panier :</caption>
         <tr>
-          <td>Nombre d'article(s) commandé(s) :</td>
+          <td>Quantité :</td>
           <td id="productsNumber"></td>
         </tr>
         <tr>
@@ -104,10 +104,13 @@
   
   </main> 
 
-  <footer>
-    <div class="container">
-      <p class="font-weight-bold">Orinoco</p>
-      <a href="mailto:contact@orinoco.com" class="text-dark">contact@orinoco.com</a>              
+<footer>
+    <div class="footer__group">
+      
+      <a href="mailto:contact@orinoco.com">Nous contacter</a>
+      <a href="#">Nos partenaires</a>
+      <a href="#">Nos différentes boutiques</a>
+                 
     </div>
   </footer>
 

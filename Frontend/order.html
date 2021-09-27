@@ -33,7 +33,7 @@
 
     <section id="guestIndent">
       <div>
-        <h2 id="orderAddress">Adresse de livraison : </h2>
+        <h2 id="orderAddress" class="info">Adresse de livraison  </h2>
         <p>Nom : 
           <span id="indentLastName"></span>
         </p>
@@ -43,9 +43,6 @@
         <p>Adresse : 
           <span id="indentAddress"></span>
         </p>
-        <p>Code Postal : 
-            <span id="indentCodePostal"></span>
-          </p>
         <p>Ville : 
           <span id="indentCity"></span>
         </p>
@@ -57,14 +54,14 @@
 
     <section id="indent">
       <br/>
-      <h3 id="numberOrder">Numéro de commande : 
+      <h3 id="numberOrder" class="info">Numéro de commande : 
         <span id="orderNumber"></span>
       </h3><br/>
-      <h4>Date de commande :</h4>
+      <h4 class="info">Date de commande :</h4>
         <span id="today"></span><br/>
           <div id="ordertIndentProducts" class="p31">    
         <table id="orderIndentItem" class="p31">
-          <caption>Votre/s produit(s) commandé(s) :</caption>
+          <caption class="info">Votre/s produit(s) commandé(s) :</caption>
           <thead>
             <tr>
               <th>Article(s) :</th>
@@ -81,13 +78,13 @@
       </div>
       <div>
         <table class="totaux p31">
-          <caption>Récapitulatif de ma commande :</caption>
+          <caption class="info">Récapitulatif de ma commande :</caption>
           <tr>
             <td>Nombre d'article(s) commandé(s) :</td>
             <td id="indentProductsNumber"></td>
           </tr>
           <tr>
-            <td>Montant à régler :</td>
+            <td>Montant total :</td>
             <td id="indentTotalPrice"></td>
           </tr>              
         </table>
@@ -99,9 +96,11 @@
     
 
   <footer>
-    <div class="container">
-      <p class="font-weight-bold">Orinoco</p>
-      <a href="mailto:contact@orinoco.com" class="text-dark">contact@orinoco.com</a>
+    <div class="footer__group">
+      
+      <a href="mailto:contact@orinoco.com">Nous contacter</a>
+      <a href="#">Nos partenaires</a>
+      <a href="#">Nos différentes boutiques</a>
                  
     </div>
   </footer>
