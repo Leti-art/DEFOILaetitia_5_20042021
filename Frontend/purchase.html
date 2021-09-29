@@ -32,8 +32,15 @@
     </div>
   </nav>
 
-  <main class="purchasePage">
+  <head>
     <h1 id="panier" class="model">Mon panier</h1>
+
+
+
+  </head>
+
+  <main class="purchasePage">
+
     <div id="purchaseProducts" class="tab">
       <table id="purchaseItem" class="tab">
         <caption class="info">Vos achats :</caption>
@@ -50,10 +57,13 @@
           </tr>
         </tbody>
       </table>
+
+      <div>
+        <button type="button" id="clearPurchase">Vider mon panier</button>
+      </div>
+
     </div>
-    <div>
-      <button type="button" id="clearPurchase">Vider mon panier</button>
-    </div>
+
     <div id="summaryTotal">
       <table class="totaux tab">
         <caption class="info">Récapitulatif de votre panier :</caption>
@@ -66,6 +76,7 @@
           <td id="totalPrice"></td>
         </tr>
       </table>
+      <a href="./index.html" id="nextPurchase">Continuer mes achats <i class="fas fa-shopping-cart"></i></a>
     </div>
     <section id="infoGuest">
       <br />

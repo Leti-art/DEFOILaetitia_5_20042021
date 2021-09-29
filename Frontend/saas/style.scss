@@ -229,22 +229,32 @@ body{
 }
 
 /*page panier*/
+head{
+    display: flex;
+    
+}
 
 .purchasePage{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin: 20px;
     padding: 30px;
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
+    }
+    
     & #clearPurchase{
-        margin-bottom: 20px;
+        margin: 50px 0 0 0;
         @include bouton;
     }
     & #clearPurchase:hover {
         cursor: pointer;
     }
+
+    
     
     & #purchaseProducts,
     #summaryTotal,
@@ -268,7 +278,7 @@ body{
     #sendOrder{
         margin: 20px 0 10px 0;
         @include bouton;
-        
+              
     }
     & #sendOrder:hover {
         cursor: pointer;
@@ -298,6 +308,16 @@ body{
     }
 }
 
+#nextPurchase{
+    @include bouton;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+#nextPurchase:hover {
+    cursor: pointer;
+}
 /*page order*/
 
 .pageOrder{
