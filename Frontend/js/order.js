@@ -1,4 +1,4 @@
-//on affiche les Coordonnéesdu client venant du formulaire 
+//on affiche les Coordonnées du client venant du formulaire 
 const order = JSON.parse(localStorage.getItem("order"));
 document.getElementById("orderNumber").innerText = order.orderId;
 document.getElementById("indentLastName").innerText = order.contact.lastName;

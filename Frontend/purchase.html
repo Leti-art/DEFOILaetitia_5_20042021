@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="peluches fait main, ecologique">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Orin'OURS</title>
 
-    <link rel="stylesheet" href="./saas/style.css">
-    <script src="./js/purchase.js" defer></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="peluches fait main, ecologique">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Orin'OURS</title>
+
+  <link rel="stylesheet" href="./saas/style.css">
+  <script src="./js/purchase.js" defer></script>
 </head>
 <body">
 
@@ -17,22 +20,21 @@
 
   <nav class="navBarre">
     <img src="./logo.PNG" class="logo" alt="logo de orinoco">
-    <div class="navBarre__liste"> 
+    <div class="navBarre__liste">
       <ul>
         <li>
-          <a href="./index.html">Accueil</a>
+          <a href="./index.html">Accueil <i class="fas fa-home"></i></a>
         </li>
-        
         <li>
-          <a href="./purchase.html">Mon panier</a>
+          <a href="./purchase.html">Mon panier <i class="fas fa-shopping-cart"></i></a>
         </li>
       </ul>
     </div>
   </nav>
 
   <main class="purchasePage">
-    <h1 id="panier" class="model">Mon panier</h1>  
-    <div id="purchaseProducts" class="tab">    
+    <h1 id="panier" class="model">Mon panier</h1>
+    <div id="purchaseProducts" class="tab">
       <table id="purchaseItem" class="tab">
         <caption class="info">Vos achats :</caption>
         <thead>
@@ -44,14 +46,14 @@
         <tbody>
           <tr>
             <td class="finalItem"></td>
-            <td class="unitPrice"></td> 
-          </tr>          
-        </tbody>             
+            <td class="unitPrice"></td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <div>
       <button type="button" id="clearPurchase">Vider mon panier</button>
-    </div>   
+    </div>
     <div id="summaryTotal">
       <table class="totaux tab">
         <caption class="info">Récapitulatif de votre panier :</caption>
@@ -62,26 +64,27 @@
         <tr>
           <td>Montant total :</td>
           <td id="totalPrice"></td>
-        </tr>              
+        </tr>
       </table>
     </div>
     <section id="infoGuest">
-      <br/><h2 id="info" class="info">Merci de remplir ce formulaire pour valider votre commande.</h2><br/>
-      <form action="#" id="formulaire"> 
+      <br />
+      <h2 id="info" class="info">Merci de remplir ce formulaire pour valider votre commande.</h2><br />
+      <form action="#" id="formulaire">
         <fieldset class="nameDetails">
           <legend>Vos informations personnelles</legend>
           <p>
             <label for="lastName">Nom :</label>
-            <input type="text" name="lastName" id="lastName" placeholder="  Nom" required /><br/>
+            <input type="text" name="lastName" id="lastName" placeholder="  Nom" required /><br />
           </p>
           <p>
             <label for="firstName">Prénom :</label>
-            <input type="text" name="firstName" id="firstName" placeholder="  Prénom" required /><br/>
+            <input type="text" name="firstName" id="firstName" placeholder="  Prénom" required /><br />
           </p>
           <p>
             <label for="email">E-mail :</label>
-            <input type="email" name="email" id="email" placeholder=" orinoco@exemple.com" required /><br/>
-          </p><br/>
+            <input type="email" name="email" id="email" placeholder=" orinoco@exemple.com" required /><br />
+          </p><br />
         </fieldset>
         <fieldset class="addressDetails">
           <legend>Coordonnées :</legend>
@@ -92,29 +95,30 @@
           <p>
             <label for="city">Ville :</label>
             <input type="text" name="city" id="city" placeholder="  Ville" required />
-          </p> 
-          
+          </p>
+
         </fieldset>
-        
-      </form>    
-      <button type="submit" id="sendOrder">Valider ma commande</button><br/>     
+
+      </form>
+      <button type="submit" id="sendOrder">Valider ma commande</button><br />
     </section>
 
-    
-  
-  </main> 
 
-<footer>
+
+  </main>
+
+  <footer>
     <div class="footer__group">
-      
+
       <a href="mailto:contact@orinoco.com">Nous contacter</a>
       <a href="#">Nos partenaires</a>
       <a href="#">Nos différentes boutiques</a>
-                 
+
     </div>
   </footer>
 
-    
-    
-</body>
+
+
+  </body>
+
 </html>
