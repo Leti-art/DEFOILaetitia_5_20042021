@@ -42,10 +42,7 @@ console.log(totalPrice);
 
 
 // pour vider le Panier
-document.querySelector('#clearPurchase').onclick = () => {
-    localStorage.clear();
-    document.location.reload();
-};
+const btnClearCart = document.querySelector('#clearPurchase');
 
 
 // formulaire et vérification des données
@@ -102,7 +99,7 @@ const buildContactData = () => {
         !checkInputCity(city) ||
         !checkInputEmail(email) 
     ) {
-        return false;                        
+        return;                        
     }
     alert("Merci pour votre commande");
     return {                                           
@@ -142,45 +139,53 @@ const displayEmptyPurchase = () => {
     document.querySelector(".purchasePage").innerHTML = '<br/><div>Votre panier est vide.</div><br/>';
 }
 
-(() => {
-    const purchase = JSON.parse(localStorage.getItem("purchase"));
-    if (purchase && purchase.products.length){
-        displayPurchase(purchase);
-    }else{
-        displayEmptyPurchase();
-    } 
 
-    const sendOrder = () => {
-        const data = buildObjectsForOrder(purchase);
-    console.log(data);
+const purchase = JSON.parse(localStorage.getItem("purchase"));
+if (purchase && purchase.products.length){
+    displayPurchase(purchase);
+}else{
+    displayEmptyPurchase();
+} 
+
+    
+    
+const btnSendOrder = document.querySelector('#sendOrder');
+if (btnSendOrder){
+btnSendOrder.addEventListener('click', function(){
+    
+    const data = buildObjectsForOrder(purchase);
+    
     // gestion des erreurs ; si contact =  true,  on execute le fetch
-        if(!!data.contact){                                         
-            fetch("http://localhost:3000/api/teddies/order", {
-                method: "post",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type":"application/json"
-                },
-                body: JSON.stringify(data),              
-            })
-            .then(function (httpResponse) {
-                return httpResponse.json();
-            })
-            .then(function (order) {
-        console.log(order);
-            localStorage.setItem('order', JSON.stringify(order));
-            /*localStorage.removeItem('purchase');*/
-            location.replace('./order.html');
-                return order;
-            })
-            .catch(function (error) {
-                alert(error);
-            });   
-        } /*else {
-            alert('Votre formulaire est mal rempli');      
-        }*/
-    };
-    const btn = document.querySelector('#sendOrder');
-    btn.addEventListener('click', sendOrder);
-})();
 
+    if(!!data.contact){                                         
+        fetch("http://localhost:3000/api/teddies/order", {
+            method: "post",
+            headers: {
+                Accept: "application/json",
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(data),              
+        })
+        .then(function (httpResponse) {
+            return httpResponse.json();
+        })
+        .then(function (order) {
+        
+        localStorage.setItem('order', JSON.stringify(order));
+    
+        location.replace('./order.html');
+            return order;
+        })
+        .catch(function (error) {
+            alert(error);
+        });   
+    }            
+});
+
+}
+
+
+btnClearCart.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload(); 
+});
