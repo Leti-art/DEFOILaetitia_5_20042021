@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="peluches fait main, ecologique">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Orin'OURS</title>
 
-    <link rel="stylesheet" href="./saas/style.css">
-    <script src="./js/order.js" defer></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="peluches fait main, ecologique">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Orin'OURS</title>
+
+  <link rel="stylesheet" href="./saas/style.css">
+  <script src="./js/order.js" defer></script>
 </head>
+
 <body>
 
   <!--navbarre-->
 
   <nav class="navBarre">
     <img src="./logo.PNG" class="logo" alt="logo de orinoco">
-    <div class="navBarre__liste"> 
+    <div class="navBarre__liste">
       <ul>
         <li>
           <a href="./index.html">Accueil</a>
         </li>
-        
+
         <li>
           <a href="./purchase.html">Mon panier</a>
         </li>
@@ -30,38 +32,40 @@
     </div>
   </nav>
   <main class="pageOrder">
+    <h1 class="info">Merci de votre commande et à bientôt chez Orin'OURS!</h1>
 
     <section id="guestIndent">
       <div>
-        <h2 id="orderAddress" class="info">Adresse de livraison  </h2>
-        <p>Nom : 
+        <h2 id="orderAddress" class="info">Informations client: Adresse de livraison </h2>
+        <p>Nom :
           <span id="indentLastName"></span>
         </p>
-        <p>Prénom : 
+        <p>Prénom :
           <span id="indentFirstName"></span>
         </p>
-        <p>Adresse : 
+        <p>Adresse :
           <span id="indentAddress"></span>
         </p>
-        <p>Ville : 
+        <p>Ville :
           <span id="indentCity"></span>
         </p>
-        <p>e-mail : 
+        <p>e-mail :
           <span id="indentEmail"></span>
         </p>
-      </div> 
-    </section> 
+      </div>
+    </section>
 
     <section id="indent">
-      <br/>
-      <h3 id="numberOrder" class="info">Numéro de commande : 
+      <br />
+      <h3 id="numberOrder" class="info">Numéro de commande :
         <span id="orderNumber"></span>
-      </h3><br/>
+      </h3><br />
       <h4 class="info">Date de commande :</h4>
-        <span id="today"></span><br/>
-          <div id="ordertIndentProducts" class="p31">    
+      <span id="today"></span><br />
+      <hr>
+      <div id="ordertIndentProducts" class="p31">
         <table id="orderIndentItem" class="p31">
-          <caption class="info">Votre/s produit(s) commandé(s) :</caption>
+          <caption class="info">Produit(s) commandé(s) :</caption>
           <thead>
             <tr>
               <th>Article(s) :</th>
@@ -71,13 +75,14 @@
           <tbody>
             <tr>
               <td class="finalIndentItem"></td>
-              <td class="unitIndentPrice"></td> 
-            </tr>          
-          </tbody>             
+              <td class="unitIndentPrice"></td>
+            </tr>
+          </tbody>
         </table>
       </div>
       <div>
         <table class="totaux p31">
+          <hr>
           <caption class="info">Récapitulatif de ma commande :</caption>
           <tr>
             <td>Nombre d'article(s) commandé(s) :</td>
@@ -86,26 +91,29 @@
           <tr>
             <td>Montant total :</td>
             <td id="indentTotalPrice"></td>
-          </tr>              
+          </tr>
         </table>
       </div>
     </section>
-            
+
+    <a href="index.html" class="sendIndex">Revenir à la boutique</a>
+
   </main>
 
-    
+
 
   <footer>
     <div class="footer__group">
-      
+
       <a href="mailto:contact@orinoco.com">Nous contacter</a>
       <a href="#">Nos partenaires</a>
       <a href="#">Nos différentes boutiques</a>
-                 
+
     </div>
   </footer>
 
-    
-    
+
+
 </body>
+
 </html>
