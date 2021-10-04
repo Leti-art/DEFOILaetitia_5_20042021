@@ -489,7 +489,7 @@ head {
   padding-left: 20px;
 }
 
-hr {
+.line {
   height: 4px;
   color: black;
   background-color: black;
